@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Nav from "./components/Nav.js"
+import Hero from "./components/Hero.js"
+import Card from "./components/Card.js"
+import style from "./index.css"
+import data from "./data.js"
 
-function App() {
+export default function App() {
+  const cards = data.map((cardData) => {
+    return <Card key = {cardData.id}
+                 {...cardData}
+            />
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Nav />
+        <Hero />
+        <section className="cards-list">
+          {cards}
+        </section>
     </div>
-  );
+      
+  )
+//   <Card
+//   img = "katie-zaferes.png"
+//   rate = {5.0}
+//   place = "(6) . USA"
+//   desc = "Life lessons with Katie Zaferes"
+//   cost = {136}
+// />
 }
-
-export default App;
